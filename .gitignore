@@ -1,0 +1,6 @@
+_build/
+setup.*
+*.byte
+myocamlbuild.ml
+configure
+_tags

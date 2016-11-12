@@ -1,0 +1,6 @@
+PKG opium
+
+EXT lwt
+
+S src
+B _build/**
