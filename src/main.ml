@@ -1,23 +1,13 @@
 open Opium.Std
 open Tyxml.Html
 
-let index_page =
-  "<!DOCTYPE html>
-  <html class=\"no-js\" lang=\"en\">
-    <head>
-      <meta charset=\"utf-8\">
-      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-      <title>Mirage-Dashboard</title>
-    </head>
-    <body>
-      <div id='app'></div>
-      <script type=\"text/javascript\" src=\"assets/client.js\"></script>
-    </body>
-  </html>"
-
+module Server = Cohttp_lwt_unix.Server
 
 let home_page = get "/" (fun req ->
-    `Html index_page |> respond')
+    let headers = Cohttp.Header.init_with "content-type" "html" in
+    Server.respond_file ~headers ~fname:"./index.html" () >>| fun resp ->
+    Response.of_response_body resp
+  )
 
 let _ =
   App.empty
