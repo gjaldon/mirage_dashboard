@@ -1,4 +1,7 @@
 PKG opium
+PKG github.unix
+PKG tyxml
+PKG lwt
 
 EXT lwt
 
