@@ -75,15 +75,11 @@ end = struct
     a_onclick (fun _ev -> fn (); true)
 
 
-  let repos =
-    div [R.pcdata Md_repos.Model.display]
-
-
   let main = div [
     div ~a:[a_class ["display"]] [R.pcdata Model.display];
     button ~a:[onclick Model.start] [pcdata "Start"];
     button ~a:[onclick Model.stop] [pcdata "Stop"];
-    repos
+    Md_repos.render ()
   ]
 end
 

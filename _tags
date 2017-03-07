@@ -1,4 +1,4 @@
 true: package(opium.unix,github.unix,lwt,tyxml)
-<js/*>: package(js_of_ocaml.ppx,js_of_ocaml,js_of_ocaml.tyxml,cohttp.js)
+<js/*>: package(js_of_ocaml.ppx,js_of_ocaml,js_of_ocaml.tyxml,react,cohttp.js)
 <js>: include
 <src>: include
