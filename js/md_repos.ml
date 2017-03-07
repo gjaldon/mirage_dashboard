@@ -6,7 +6,10 @@ module Model = struct
 
   let update = function
     | `Initial -> []
-    | `Loaded content -> Github_j.repositories_of_string content
+    | `Loaded content ->
+      let json = Yojson.Basic.from_string content in
+      let open Yojson.Basic.Util in
+      member "repos" json |> Yojson.Basic.to_string |> Github_j.repositories_of_string
 
   let display =
     S.l1 update state
@@ -22,7 +25,8 @@ open Tyxml_js.Html5
 let render () =
   Model.display
   |> S.map (function
-      | [] -> pcdata "None"
+      | [] ->
+        pcdata "None"
       | repos ->
         ul (List.map (fun repo ->
           li [pcdata repo.Github_j.repository_name]
