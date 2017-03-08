@@ -79,7 +79,8 @@ end = struct
     div ~a:[a_class ["display"]] [R.pcdata Model.display];
     button ~a:[onclick Model.start] [pcdata "Start"];
     button ~a:[onclick Model.stop] [pcdata "Stop"];
-    Md_repos.render ()
+    Md_repos.render ();
+    Md_repos.render_pagination ();
   ]
 end
 
